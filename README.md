@@ -1,4 +1,3 @@
-# vue2-koa-mongoDB搭建博文分享平台
 
 
 从设计到前端重构后端交互数据库存储一手操作，新手向全栈入门
@@ -8,7 +7,7 @@
 # Blink前后端
 
 运行方式：（一定要安装mongodb） mongodb安装教程： https://segmentfault.com/a/1190000002547229
-
+<pre>
 //启动mongo服务
 cd: /mongo
 ./mongod
@@ -22,6 +21,7 @@ npm run dev
 cd: /server
 npm install all
 npm run dev
+</pre>
 
 ## 前端目录结构
 <pre>
@@ -59,13 +59,12 @@ npm run dev
     └─store				# vuex仓库
           │
 	      │
-	      ├─ action.js 		
+	      ├─ action.js
     	  │
     	  │
-    	  ├─ index.js 		
+    	  ├─ index.js
     	  │
     	  │
-    	  └─ mutation-type 	
+    	  └─ mutation-type
 </pre>
-
 
