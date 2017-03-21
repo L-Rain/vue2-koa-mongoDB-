@@ -23,7 +23,7 @@ npm install all
 npm run dev
 </pre>
 
-#“闪现”制作流程之（二）:再讲前端
+## “闪现”制作流程之（二）:再讲前端
 <p>前端用的就是<strong>vue</strong>渲染，当然还有webpac，vuex，vue-router，vue-resource等冚家大礼包。都是老朋友了，之前的商城和会员中心用的都是vue+webpack，只不过这次全面升级，变成冚家<strong>2.0</strong>，很遗憾vue并不支持ie9还是8，拒绝ie从我做起：）</p>
 <p><em>记录点自己遇到的坑吧:</em><br>1，vue-router2.0的动态路由</p>
 <pre><code>//html
@@ -107,7 +107,7 @@ Vue.http.interceptors.push((request, next) =&gt; {
 </code></pre>
 
 
-#“闪现”制作流程之（三）: 三话后台
+## “闪现”制作流程之（三）: 三话后台
 <p><strong>使用koa搭建服务器，使用MongoDB存储数据</strong></p>
 <p>讲讲main.js里各类插件处理各类问题：</p>
 <p>1，路由匹配：koa-router</p>
@@ -136,7 +136,7 @@ app.use(function *(next){
   var ctx = this,
       thisUrl = ctx.request.url;
   console.log(thisUrl)
-  // 如果不是admin，直接跳过该中间件
+  // 如果不是create或者checkOut路径，直接跳过该中间件
   if (thisUrl.indexOf(&#39;create&#39;) === -1 &amp;&amp; thisUrl.indexOf(&#39;checkOut&#39;) == -1) {
     return yield next;
   }
@@ -175,7 +175,7 @@ app.use(function *(next){
 const mongooseDB = function () {
     //重点在这一句，赋值一个全局的承诺。
     mongoose.Promise = global.Promise
-  mongoose.connect(&#39;mongodb://127.0.0.1:27017/wecut_blog&#39;)
+  mongoose.connect(&#39;mongodb://127.0.0.1:27017/my_blog&#39;)
   return mongoose.connection
 }
 </code></pre><p><strong>敲黑板，划重点：</strong><br>流程（二）前端里说过，图片是通过formdata形式提交数据，如何将数据流转为绝对地址保存在本地服务器：co-busboy</p>
