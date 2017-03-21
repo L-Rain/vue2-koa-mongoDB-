@@ -1,0 +1,14 @@
+/** IMPORTS **/
+@import '_mixin.scss';
+@import '_reset.scss';
+
+/** GLOBALS **/
+body {
+  width: 100%;
+  overflow-x: hidden;
+  font-family: "Microsoft YaHei", "微软雅黑", STHeiTi, sans-serif,"Helvetica Neue",Helvetica;
+  font-size: 16px;
+  @include font-smoothing();
+  background-color: #f6f6f5;
+  @include clearfix();
+}

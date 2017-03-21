@@ -1,0 +1,128 @@
+@charset "utf-8";
+
+//网站背景
+$bgc: #f2f5f9;
+//主色
+$gre : #3dc932;
+//字体色重
+$strong : #666;
+$weak : #aaa;
+.pr {position: relative;}
+.pa {position: absolute;}
+.pf {position: fixed;}
+.green {color: $gre};
+
+//css3 tarnsition统一设置
+@mixin css3($time: 0.3s, $speedStyle: ease-out, $shadow: box-shadow) {
+    transition: $shadow $time $speedStyle;
+    -webkit-transition: $shadow $time $speedStyle;
+    -moz-transition: $shadow $time $speedStyle;
+    -ms-transition: $shadow $time $speedStyle;
+    -o-transition: $shadow $time $speedStyle;
+}
+//卡片背景与圆角设置
+@mixin gridStyle($br:2px, $backC: #fff) {
+    background: $backC;
+    border-radius: $br;
+}
+//单行文本溢出设置
+@mixin textOverflow() {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+//多行文本溢出设置
+@mixin textOverflowP($pCount: 6) {
+    display: -webkit-box !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $pCount;
+}
+//单行字体居中
+@mixin fontMiddle($h){
+    @include remValue(height, $h);
+    @include remValue(line-height, $h);
+}
+//矩阵按钮
+@mixin gridButton($w, $h, $br:4px, $backC:#fff){
+    @include gridStyle($br, $backC);
+    @include gridRem($w, $h);
+    @include remValue(line-height, $h);
+    text-align: center;
+}
+//雪碧图处理
+@mixin sprite($icon-name, $isRetina:false, $repeat:no-repeat) {
+    $sprites: sprite-map("sprite/*.png");
+    background-repeat: $repeat;
+    background-image: sprite-url($sprites);
+    background-position: sprite-position($sprites, $icon-name);
+    width: image-width(sprite-file($sprites, $icon-name));
+    height: image-height(sprite-file($sprites, $icon-name));
+    @if $isRetina {
+        $retina: sprite-map('sprite-retina/*.png');
+        @media (min--moz-device-pixel-ratio: 1.3),
+        (-o-min-device-pixel-ratio: 2.6/2),
+        (-webkit-min-device-pixel-ratio: 1.3),
+        (min-device-pixel-ratio: 1.3),
+        (min-resolution: 1.3dppx) {
+            background-image: sprite-url($retina);
+            background-position: 0 round(nth(sprite-position($retina, $icon-name), 2) / 2);
+            height: round(image-height(sprite-file($retina, $icon-name)) / 2);
+            width: round(image-width(sprite-file($retina, $icon-name)) / 2);
+            $double-width: ceil(image-width(sprite-path($retina)) / 2);
+            $auto-height: auto;
+            background-size: $double-width $auto-height;
+        }
+    }
+}
+
+//rem设置
+$browser-default-font-size: 20px !default;  //设置rem根字体默认数值20
+//去除单位
+@function strip-units($number){
+    @return $number / ($number * 0 + 1);
+}
+//属性对应rem值设置
+@mixin remValue($property, $values...) {
+  $max: length($values);//返回$values列表的长度值
+  $pxValues: '';
+  $remValues: '';
+
+  @for $i from 1 through $max {
+    $value: strip-units(nth($values, $i));//返回$values列表中的第$i个值，并将单位值去掉
+    $browser-default-font-size: strip-units($browser-default-font-size);
+    $pxValues: #{$pxValues + $value / $browser-default-font-size / 2}rem;   //rem计算，切图数值除以2再除以根字体
+
+    @if $i < $max {
+      $pxValues: #{$pxValues + " "};
+    }
+  } 
+
+  @for $i from 1 through $max {
+    $value: strip-units(nth($values, $i));
+    $remValues: #{$remValues + $value}px;
+
+    @if $i < $max {
+      $remValues: #{$remValues + " "};
+    }
+  } 
+
+    // #{$property}: $remValues;
+    #{$property}: $pxValues; 
+}
+
+//依据切图尺寸/2后定义div宽高,并返回rem值
+@mixin gridRem($width, $height){
+    $browser-default-font-size : strip-units($browser-default-font-size);
+    // width: #{$width / 2}px;
+    width: #{$width / 2 / $browser-default-font-size}rem;
+    // height: #{$height / 2}px;
+    height: #{$height / 2 / $browser-default-font-size}rem;
+}
+
+
+// @function remReturn($value){
+//     @return #{$value / strip-units($browser-default-font-size)}rem;
+// }

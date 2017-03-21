@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh" style="overflow-x:hidden;
+">
+<head>
+	<meta charset="UTF-8">
+    <title>Blink</title>
+    <!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+    <meta name="format-detection" content="telphone=no, email=no" />
+    <!-- 启用360浏览器的极速模式(webkit) -->
+    <meta name="renderer" content="webkit">
+    <!-- 避免IE使用兼容模式 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+    <meta name="HandheldFriendly" content="true">
+    <!-- 微软的老式浏览器 -->
+    <meta name="x5-fullscreen" content="true">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- windows phone 点击无高光 -->
+    <meta name="msapplication-tap-highlight" content="no">
+    <link rel="shortcut icon" href="./src/images/favicon.ico">
+    <script type="text/javascript" src="//cdn.bootcss.com/zepto/1.2.0/zepto.min.js"></script>
+    <script type="text/javascript" src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+    <script type="text/javascript" src="//cdn.bootcss.com/Swiper/3.3.1/js/swiper.min.js"></script>
+</head>
+<body  scroll="no" style="overflow-x:hidden;">
+<app></app>
+
+<script src="dist/build.js"></script>
+<script>
+(function() {
+
+    //异步加载打包后build.js
+    function async_load(){
+         var s = document.createElement('script');
+         s.type = 'text/javascript';
+         s.async = true;
+         //项目线上地址
+         s.src = 'https://.../build.js';
+         var x = document.getElementsByTagName('script')[0];
+         x.parentNode.insertBefore(s, x);
+    }
+    // if (window.attachEvent)
+    //     window.attachEvent('onload', async_load);
+    // else
+    //     window.addEventListener('load', async_load, false);
+
+})();
+</script>
+
+</body>
+</html>

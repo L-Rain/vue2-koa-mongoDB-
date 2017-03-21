@@ -1,0 +1,42 @@
+@import "mixin";
+
+//弹出层设置
+.pop_layer {
+  position: fixed;
+  display: none;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,0.6);
+  img {
+    width: 100%;
+  } 
+  //提示框
+  .tips {
+    position: absolute;
+    @include remValue(width, 350);
+    top: 50%;
+    left: 50%;
+    @include gridStyle(0.3rem);
+    @include remValue(margin-left, -350/2);
+    @include remValue(margin-top, -400/2);
+    padding: 5% 0;
+    .tips_light {
+      @include gridRem(51, 73);
+      margin: 5% auto;
+    }
+    .tips_text {
+      font-family: "微软雅黑","Microsoft Yahei";
+      font-size: 0.7rem;
+      color: #8c8c8c;
+      text-align: center;
+      margin-bottom: 5%;
+    }
+    .tips_text_h {
+      font-size: 0.9rem;
+      font-weight: bold;
+    }
+  }
+}

@@ -1,0 +1,145 @@
+@charset "utf-8";
+/* 
+*	reset stylesheet
+*	lisarao@gamil.com
+* 
+*/
+
+// 全局 reset 定义
+@mixin global-reset {
+	html, body, div, span,object, iframe,
+	h1, h2, h3, h4, h5, h6, p, 
+	a, address, big, cite, code,
+	em, img, q, s,
+	small, strong, sub, sup, tt,
+	b, u, i, center,
+	dl, dt, dd, ol, ul, li,
+	fieldset, form, label, legend,
+	table, caption, tbody, tfoot, thead, tr, th, td,
+	article, aside, canvas, details, embed, 
+	figure, figcaption, footer, header, hgroup, 
+	menu, nav, output,section, summary,
+	time, mark, audio, video {
+		@include reset-box-model;
+		@include text-size-adjust;
+	}
+	@include reset-html5;
+
+	ol,ul,li {
+		@include reset-list-style;
+	}
+	table {
+		@include reset-table;
+	}
+	img {
+		@include  reset-image-anchor-border;
+	}
+	a img {
+		@include touch-callout;
+	}
+	a {
+		@include no-underline;
+	}
+	#{headings(all)} {
+		@include font-weight;
+	}
+}
+// 盒模式 reset 定义
+@mixin reset-box-model {
+	margin:0;
+	padding:0;
+}
+// list style
+@mixin reset-list-style {
+	list-style: none;
+}
+// table
+@mixin reset-table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+//image border [ ie7- ]
+@mixin reset-image-anchor-border {
+	border:0 none;
+}
+// html 5 block 
+@mixin reset-html5 {
+	#{elements-of-type(html5-block)}{
+		display:block;
+	}
+}
+
+@mixin no-underline {
+	text-decoration: none;
+}
+
+ /* 禁止长按链接与图片弹出菜单 */
+ @mixin touch-callout {
+ 	-webkit-touch-callout : none;
+ }
+
+// focus outline
+@mixin reset-focus {
+	outline: 0 ;
+}
+
+// font-size
+@mixin text-size-adjust {
+	-webkit-text-size-adjust:none;
+	-ms-text-size-adjust:100%;
+	-webkit-text-size-adjust:100%;
+}
+
+// overflow -x  scroll hidden
+@mixin set-scroll-x {
+	overflow-x:hidden;
+}
+//用户选择文本 
+ @mixin user-select {
+	-webkit-user-select : none;
+	user-select : none;
+ }
+//font
+ @mixin default-font {
+ 	font:1em/1.8;
+ }
+//字体平滑
+ @mixin font-smoothing {
+ 	-webkit-font-smoothing:antialiased;	//最佳平滑效果
+ }
+ //font-weight 400
+
+@mixin font-weight {
+	font-weight:400;
+}
+
+//font-style normal
+@mixin normal-font {
+	font-style:normal;
+}
+
+@mixin clearfix {
+	.fl {
+		float:left;
+		display:inline;
+	}
+	.fr {
+		float:right;
+		display:inline;
+	}
+	.clearfix{
+		zoom:1;
+		&:after{
+			content:'';
+			display:block;
+			height:0;
+			clear:both;
+			visibility:hidden;
+		}
+	}
+}
+
+@include global-reset;
+
+
+
