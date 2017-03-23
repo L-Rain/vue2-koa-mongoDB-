@@ -24,7 +24,7 @@ npm run dev
 </pre>
 
 ## “闪现”制作流程之（二）:再讲前端
-<p>前端用的就是<strong>vue</strong>渲染，当然还有webpac，vuex，vue-router，vue-resource等冚家大礼包。都是老朋友了，之前的商城和会员中心用的都是vue+webpack，只不过这次全面升级，变成冚家<strong>2.0</strong>，很遗憾vue并不支持ie9还是8，拒绝ie从我做起：）</p>
+<p>前端用的就是<strong>vue</strong>渲染，当然还有webpac，vuex，vue-router，vue-resource等冚家大礼包。只不过这次全面升级，变成冚家<strong>2.0</strong></p>
 <p><em>记录点自己遇到的坑吧:</em><br>1，vue-router2.0的动态路由</p>
 <pre><code>//html
 &lt;router-link :to=&quot;{
