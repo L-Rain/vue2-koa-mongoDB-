@@ -23,7 +23,7 @@ npm install all
 npm run dev
 </pre>
 
-# 跳过设计流程（这里把自己内部分享直接复制来了）
+## 跳过设计流程（这里把自己内部分享直接复制来了）
 ## “闪现”制作流程之（二）:再讲前端
 <p>前端用的就是<strong>vue</strong>渲染，当然还有webpac，vuex，vue-router，vue-resource等冚家大礼包。只不过这次全面升级，变成冚家<strong>2.0</strong></p>
 <p><em>记录点自己遇到的坑吧:</em><br>1，vue-router2.0的动态路由</p>
